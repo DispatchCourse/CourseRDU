@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: remote-dispatcher-bot
+    env: python
+    buildCommand: ""
+    startCommand: python main.py
+    region: oregon

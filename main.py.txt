@@ -1,0 +1,18 @@
+from aiogram import Bot, Dispatcher, types
+from aiogram.utils import executor
+
+API_TOKEN = 'вставь_тут_твой_бот_токен'
+
+bot = Bot(token=API_TOKEN)
+dp = Dispatcher(bot)
+
+@dp.message_handler(commands=['start'])
+async def send_welcome(message: types.Message):
+    await message.reply("👋 Привет! Я бот. Напиши 'курс' чтобы начать!")
+
+@dp.message_handler(lambda message: 'курс' in message.text.lower())
+async def send_course_info(message: types.Message):
+    await message.answer("📘 Получи демо-версию курса!")
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
